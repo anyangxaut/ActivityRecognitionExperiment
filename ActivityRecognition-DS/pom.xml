@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>edu.xautjzd</groupId>
+	<artifactId>activityrecognition</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+
+	<name>activityrecognition</name>
+	<url>http://maven.apache.org</url>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>tw.edu.ntu.csie</groupId>
+			<artifactId>libsvm</artifactId>
+			<version>3.17</version>
+		</dependency>
+
+		<!-- Decision Tree -->
+		<dependency>
+			<groupId>quickml</groupId>
+			<artifactId>quickml</artifactId>
+			<version>0.4.8.8</version>
+		</dependency>
+
+		<!-- MySQL database driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.20</version>
+		</dependency>
+
+		<!-- Hibernate framework -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.10.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.4.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+		</dependency>
+
+	</dependencies>
+
+	<!-- 解决依赖包无法下载(maven本地库需要配置代理) -->
+	<repositories>
+		<repository>
+			<id>quickml-maven-repo</id>
+			<name>Sanity's Maven repository on GitHub</name>
+			<url>http://sanity.github.com/maven-repo/repository</url>
+		</repository>
+		<repository>
+			<id>stats-util-maven-repo</id>
+			<name>Sanity's Maven repository on GitHub</name>
+			<url>http://maven.twttr.com/com/twitter</url>
+		</repository>
+		<repository>
+			<id>guice-maven-repo</id>
+			<name>Sanity's Maven repository on GitHub</name>
+			<url>http://central.maven.org/maven2</url>
+		</repository>
+	</repositories>
+
+</project>
