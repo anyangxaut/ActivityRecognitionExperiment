@@ -4,11 +4,11 @@
 % 要求m1 m2 m3 ...之间互相无交集(经Bayes变换后的BPA的合成结果)
 % m(全集)可不为0，表示不确定度
 % m(空集)肯定是0
-diary('C:\anyang\nbcsensorresult.txt');
+diary('C:\Users\Administrator\Desktop\ActivityRecognitionExperiment\ExperimentData\DSdatafusion\dsdatafusionresult123.txt');
       diary on;
-for ii =1: size(nbcsensor12,1)
-    x=nbcsensor12(ii,:);
-    y=nbcsensor3(ii,:);
+for ii =1: size(dsdatafusionresult12,1)
+    x=dsdatafusionresult12(ii,:);
+    y=dsdata3(ii,:);
     [nx,mx]=size(x);
     if 1~=nx
       disp('x应为行向量');

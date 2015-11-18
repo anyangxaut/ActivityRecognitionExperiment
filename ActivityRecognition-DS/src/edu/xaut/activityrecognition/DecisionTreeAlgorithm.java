@@ -153,7 +153,7 @@ public class DecisionTreeAlgorithm {
 	 			// 训练DecisionTree模型
 				trainDecisionTree();
 	 			// 查询测试数据信息的sql语句	
-	 			String sqlFindTest = "select * from dsfusion where Id between " + (i*700+1) + " and " + ((i+1)*700) + ";";
+	 			String sqlFindTest = "select * from dsfusion where Id between " + (i*2802+1) + " and " + ((i+1)*2802) + ";";
 	 			// 执行查询操作
 	 			testList = dao.search(sqlFindTest);
 	 			

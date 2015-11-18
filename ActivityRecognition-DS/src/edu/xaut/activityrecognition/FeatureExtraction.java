@@ -76,6 +76,8 @@ public class FeatureExtraction {
 			// 循环查询各个传感器的数据信息，并进行存储
 			sqlFind[i] = "select * from " + tableName + " where SensorId = " + (i+1) + ";";
 			list[i] = dao.searchNew(sqlFind[i]);
+			// 存储sql插入语句
+			StringBuilder sqlAdd = new StringBuilder();
 			
 			// 窗口划分
 			for(int j = 0; j < sumData; j = j + overlapSzie){
@@ -101,8 +103,19 @@ public class FeatureExtraction {
 				double[] correlationValue = correlation(sensorData, meanValue, varianceValue);
 				// 计算能量-3
 				double[] energyValue = energy(sensorData);
-				String[] sqlAdd = new String[1];
-				sqlAdd[0] = "INSERT INTO `featureextraction` (`SensorId`, `AccX_mean`, `AccY_mean`, `AccZ_mean`, " +
+//				String[] sqlAdd = new String[1];
+//				sqlAdd[0] = "INSERT INTO `featureextraction` (`SensorId`, `AccX_mean`, `AccY_mean`, `AccZ_mean`, " +
+//						"`AccX_variance`, `AccY_variance`, `AccZ_variance`, `AccX_AccY_correlation`, `AccY_AccZ_correlation`, " +
+//						"`AccX_AccZ_correlation`, `AccX_energy`, `AccY_energy`, `AccZ_energy`, `locomotion`) VALUES " +
+//						"(" + (i+1) + ", '" + meanValue[0] + "', '" + meanValue[1] + "', '" + meanValue[2] + "', '" + 
+//						varianceValue[0] + "', '" + varianceValue[1] + "', '" + varianceValue[2]
+//						 + "', '" + correlationValue[0] + "', '" + correlationValue[1] + "', '" + correlationValue[2] + 
+//						 "', '" + energyValue[0] + "', '" + energyValue[1] + "', '" + energyValue[2] + "', '" +
+//						 Locomotion + "');";
+//
+//				// 执行插入语句
+//				dao.save(sqlAdd);
+				String sqlStr = "INSERT INTO `featureextraction` (`SensorId`, `AccX_mean`, `AccY_mean`, `AccZ_mean`, " +
 						"`AccX_variance`, `AccY_variance`, `AccZ_variance`, `AccX_AccY_correlation`, `AccY_AccZ_correlation`, " +
 						"`AccX_AccZ_correlation`, `AccX_energy`, `AccY_energy`, `AccZ_energy`, `locomotion`) VALUES " +
 						"(" + (i+1) + ", '" + meanValue[0] + "', '" + meanValue[1] + "', '" + meanValue[2] + "', '" + 
@@ -110,10 +123,11 @@ public class FeatureExtraction {
 						 + "', '" + correlationValue[0] + "', '" + correlationValue[1] + "', '" + correlationValue[2] + 
 						 "', '" + energyValue[0] + "', '" + energyValue[1] + "', '" + energyValue[2] + "', '" +
 						 Locomotion + "');";
-
-				// 执行插入语句
-				dao.save(sqlAdd);
+				sqlAdd.append(sqlStr);
+				sqlAdd.append("#");
 			}
+			String[] sqlAddArray = sqlAdd.toString().split("#");
+			dao.save(sqlAddArray);
 		}
 
 		System.out.println("动作" + tableName + "特征提取完毕！");

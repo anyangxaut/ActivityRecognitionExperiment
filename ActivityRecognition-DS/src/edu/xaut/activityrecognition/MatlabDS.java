@@ -11,11 +11,24 @@ import java.util.List;
 import edu.xaut.dao.PreprocessingDataSaveDao;
 import edu.xaut.daoImpl.PreprocessingDataSaveImpl;
 import edu.xaut.entity.DataEntity;
-
+/**
+ * D-S证据理论matlab特征级融合后结果的处理程序
+ * 目标：将容和结果导入dsdatafusion表中，不过locomotion需要自己手动处理，默认均为1
+ * @author Administrator
+ *
+ */
 public class MatlabDS {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MatlabDS ds = new MatlabDS();
+		ds.startMatlabDS();
+	}
+	
+	
 
 	public void startMatlabDS(){
-		preprocessing("C:\\Users\\Administrator\\Desktop\\version1\\DSfusion.txt");
+		preprocessing("C:\\Users\\Administrator\\Desktop\\ActivityRecognitionExperiment\\ExperimentData\\DSdatafusion\\dsdatafusionresult123.txt");
 	}
 	
 	private void preprocessing(String filePath){
@@ -42,8 +55,9 @@ public class MatlabDS {
 						// 创建DataEntity对象，并添加至dataList.add(dataEntity);中时，会由于引用了同一个useDate对象而使得dataList
 						// 中的值都变成相同的（因为都引用了同一个对象地址），因此为了避免这种现象，需要新建一个useDate引用
 						List<String> useData = new ArrayList<String>();
-						// 将数据集中的数据条目按照空格分隔开来，并存储在数组中(0~249)
+						// 将数据集中的数据条目按照tab分隔开来，并存储在数组中(0~249)
 						wholeData = dataLine.split("	");
+						System.out.println(wholeData.length);
 						// 使用ArrayList存储wholeData中第0~9，243列数据
 						for(int i = 0; i < wholeData.length; i++){
 							useData.add(wholeData[i]);
@@ -58,7 +72,7 @@ public class MatlabDS {
 					
 					}
 						// 输出信息
-						System.out.print(filePath + "原始数据集数据共" + counter1 + "项！");
+						System.out.println(filePath + "原始数据集数据共" + counter1 + "项！");
 						// 将预处理后的原始数据进行数据库存储
 						saveDataAsDatabase(dataList);
 					
@@ -87,6 +101,7 @@ public class MatlabDS {
 			String[] sql = new String[dataList.size()];
 			for(int i = 0; i < dataList.size(); i++){
 				List<String> items = dataList.get(i).getDataInfo();
+				System.out.println(items.toString());
 				sql[i] = "INSERT INTO `dsfusion` (`AccX_mean`, `AccY_mean`, `AccZ_mean`, `AccX_variance`, " +
 						"`AccY_variance`, `AccZ_variance`, `AccX_AccY_correlation`, `AccY_AccZ_correlation`, " +
 						"`AccX_AccZ_correlation`, `AccX_energy`, `AccY_energy`, `AccZ_energy`, `locomotion`) " +

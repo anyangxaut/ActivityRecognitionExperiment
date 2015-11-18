@@ -8,7 +8,7 @@ import edu.xaut.dao.DSDataFusionDao;
 import edu.xaut.daoImpl.DSDataFusionImpl;
 import edu.xaut.entity.DataEntity;
 /**
- * 为DS证据理论后续处理做准备
+ * 为DS证据理论后续处理做准备(DS特征级融合将特征提取后的数据导出至文件，从而使用matlab进行ds证据理论数据融合)
  * 将featureextraction表中的数据按SensorId进行划分，并存储在为文件中
  * @author Administrator
  *
@@ -21,11 +21,11 @@ public class DSDataFusion {
 		// 创建Dao类进行数据库操作
 		DSDataFusionDao dao = new DSDataFusionImpl();
 		// 二分类问题：查询存储标签为0的动作类型数据信息
-//		for(int i = 0; i < SENSORNUM; i++){
-//			String sqlFind = "select * from `featureextraction` where SensorId = " + (i+1) + ";";
-//			List<DataEntity> list = dao.search(sqlFind);
-//			saveDataAsFile(list, "dsdata" + (i+1));
-//		}
+		for(int i = 0; i < SENSORNUM; i++){
+			String sqlFind = "select * from `featureextraction` where SensorId = " + (i+1) + ";";
+			List<DataEntity> list = dao.searchDS(sqlFind);
+			saveDataAsFile(list, "dsdata" + (i+1));
+		}
 	}
 	
 	// 将处理后的数据进行文件存储
@@ -34,7 +34,7 @@ public class DSDataFusion {
 		FileWriter writer;
 		try {
 			// 通过保存文件的路径及其文件名称初始化FileWriter对象
-			writer = new FileWriter("C:\\Users\\Administrator\\Desktop\\version1\\dsdata\\" + fileName + ".txt",true);
+			writer = new FileWriter("C:\\Users\\Administrator\\Desktop\\ActivityRecognitionExperiment\\ExperimentData\\DSdatafusion\\" + fileName + ".txt",true);
 			// 将预处理后的原始数据逐条进行存储
 			for(int i = 0; i < dataList.size();i++){
 				writer.write(dataList.get(i).getDataInfo().toString() + "\n");

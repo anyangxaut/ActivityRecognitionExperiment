@@ -9,12 +9,12 @@ public class ActivityRecognition {
 		// TODO Auto-generated method stub
 		
 //		// 数据预处理
-//		DataPreprocess dataPreprocess = new DataPreprocess("C:\\Users\\Administrator\\Desktop\\anyang\\train\\");
+//		DataPreprocess dataPreprocess = new DataPreprocess("C:\\Users\\Administrator\\Desktop\\ActivityRecognitionExperiment\\OpportunityUCIDataset\\train\\");
 //		dataPreprocess.startPreprocess();
 //		
 //		
 //		// 窗口划分，特征提取
-//		FeatureExtraction featureExtraction = new FeatureExtraction(3, 64, 0.5);
+//		FeatureExtraction featureExtraction = new FeatureExtraction(3, 16, 0.5);
 //		// 将不同的动作类型数据存储在不同的表中
 //		System.out.println("********************动作类型划分开始**********************");
 //		featureExtraction.splitAction(1, "stand");
@@ -22,7 +22,7 @@ public class ActivityRecognition {
 //		featureExtraction.splitAction(4, "sit");
 //		featureExtraction.splitAction(5, "lie");
 //		System.out.println("********************动作类型划分结束**********************");
-//		
+		
 //		System.out.println("********************特征提取开始**********************");
 //		// 对"stand"动作进行特征提取
 //		featureExtraction.startFeatureExtraction(1, "stand", 109095);
@@ -69,10 +69,10 @@ public class ActivityRecognition {
 		
 		
 		//D-S证据理论预备工作之NBC求出各个行为动作的分类概率
-		System.out.println("********************NBC分类算法开始**********************");
-		DSNaiveBayesianAlgorithm ds = new DSNaiveBayesianAlgorithm();
-		ds.startDSNBC();
-		System.out.println("********************NBC分类算法结束**********************");
+//		System.out.println("********************NBC分类算法开始**********************");
+//		DSNaiveBayesianAlgorithm ds = new DSNaiveBayesianAlgorithm();
+//		ds.startDSNBC();
+//		System.out.println("********************NBC分类算法结束**********************");
 		
 		// DS分类算法
 //		System.out.println("********************KNN分类算法开始**********************");
@@ -84,13 +84,11 @@ public class ActivityRecognition {
 //		NaiveBayesianAlgorithm nbc = new NaiveBayesianAlgorithm();
 //		nbc.startNBCDS();
 //		System.out.println("********************NBC分类算法结束**********************");
-//		System.out.println("********************C4.5决策树分类算法开始**********************");
-//		DecisionTreeAlgorithm dt = new DecisionTreeAlgorithm();
-//		dt.startDecisionTreeDS();
-//		System.out.println("********************C4.5决策树分类算法结束**********************");
-		
-//		MatlabDS ds = new MatlabDS();
-//		ds.startMatlabDS();
+		System.out.println("********************C4.5决策树分类算法开始**********************");
+		DecisionTreeAlgorithm dt = new DecisionTreeAlgorithm();
+		dt.startDecisionTreeDS();
+		System.out.println("********************C4.5决策树分类算法结束**********************");
+//		
 	}
 
 }
