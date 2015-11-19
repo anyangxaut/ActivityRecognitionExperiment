@@ -13,7 +13,7 @@ import edu.xaut.daoImpl.PreprocessingDataSaveImpl;
 import edu.xaut.entity.DataEntity;
 /**
  * D-S证据理论matlab特征级融合后结果的处理程序
- * 目标：将容和结果导入dsdatafusion表中，不过locomotion需要自己手动处理，默认均为1
+ * 目标：将结果导入dsdatafusion表中，不过locomotion需要自己手动处理，默认均为1
  * @author Administrator
  *
  */
@@ -56,8 +56,8 @@ public class MatlabDS {
 						// 中的值都变成相同的（因为都引用了同一个对象地址），因此为了避免这种现象，需要新建一个useDate引用
 						List<String> useData = new ArrayList<String>();
 						// 将数据集中的数据条目按照tab分隔开来，并存储在数组中(0~249)
-						wholeData = dataLine.split("	");
-						System.out.println(wholeData.length);
+						wholeData = dataLine.split("    ");
+//						System.out.println(wholeData.length);
 						// 使用ArrayList存储wholeData中第0~9，243列数据
 						for(int i = 0; i < wholeData.length; i++){
 							useData.add(wholeData[i]);
@@ -87,7 +87,7 @@ public class MatlabDS {
 			}
 		    } else{
 		    	// 要打开的文件不存在或者该文件属性不是一个文件
-		    	System.out.println(dataFile.getName() + "is not exist or not a file!");
+		    	System.out.println(dataFile.getName() + " is not exist or not a file!");
 		    }
 	
 	}
@@ -101,7 +101,7 @@ public class MatlabDS {
 			String[] sql = new String[dataList.size()];
 			for(int i = 0; i < dataList.size(); i++){
 				List<String> items = dataList.get(i).getDataInfo();
-				System.out.println(items.toString());
+//				System.out.println(items.toString());
 				sql[i] = "INSERT INTO `dsfusion` (`AccX_mean`, `AccY_mean`, `AccZ_mean`, `AccX_variance`, " +
 						"`AccY_variance`, `AccZ_variance`, `AccX_AccY_correlation`, `AccY_AccZ_correlation`, " +
 						"`AccX_AccZ_correlation`, `AccX_energy`, `AccY_energy`, `AccZ_energy`, `locomotion`) " +

@@ -1,1 +1,0 @@
-update dsfusion,featureextraction set dsfusion.locomotion = featureextraction.locomotion where featureextraction.Id = dsfusion.Id;

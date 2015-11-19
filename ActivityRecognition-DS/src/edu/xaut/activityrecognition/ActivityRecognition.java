@@ -14,7 +14,7 @@ public class ActivityRecognition {
 //		
 //		
 //		// 窗口划分，特征提取
-//		FeatureExtraction featureExtraction = new FeatureExtraction(3, 16, 0.5);
+//		FeatureExtraction featureExtraction = new FeatureExtraction(3, 64, 0.5);
 //		// 将不同的动作类型数据存储在不同的表中
 //		System.out.println("********************动作类型划分开始**********************");
 //		featureExtraction.splitAction(1, "stand");
@@ -22,7 +22,7 @@ public class ActivityRecognition {
 //		featureExtraction.splitAction(4, "sit");
 //		featureExtraction.splitAction(5, "lie");
 //		System.out.println("********************动作类型划分结束**********************");
-		
+//		
 //		System.out.println("********************特征提取开始**********************");
 //		// 对"stand"动作进行特征提取
 //		featureExtraction.startFeatureExtraction(1, "stand", 109095);
@@ -75,11 +75,11 @@ public class ActivityRecognition {
 //		System.out.println("********************NBC分类算法结束**********************");
 		
 		// DS分类算法
-//		System.out.println("********************KNN分类算法开始**********************");
-//		// 利用KNN进行分类识别
-//		KNNAlgorithm knn = new KNNAlgorithm();
-//		knn.startKNNDS();	
-//		System.out.println("********************KNN分类算法结束**********************");
+		System.out.println("********************KNN分类算法开始**********************");
+		// 利用KNN进行分类识别
+		KNNAlgorithm knn = new KNNAlgorithm();
+		knn.startKNNDS();	
+		System.out.println("********************KNN分类算法结束**********************");
 //		System.out.println("********************NBC分类算法开始**********************");
 //		NaiveBayesianAlgorithm nbc = new NaiveBayesianAlgorithm();
 //		nbc.startNBCDS();
@@ -88,7 +88,7 @@ public class ActivityRecognition {
 		DecisionTreeAlgorithm dt = new DecisionTreeAlgorithm();
 		dt.startDecisionTreeDS();
 		System.out.println("********************C4.5决策树分类算法结束**********************");
-//		
+		
 	}
 
 }

@@ -28,7 +28,7 @@ public class LibSVMTest {
 		
 		LibSVMTest.startSVMDS();
 				
-		System.out.println("********************SVM分类算法开始**********************");
+		System.out.println("********************SVM分类算法结束**********************");
 		
 		//Test for cross validation
 		//String[] crossValidationTrainArgs = {"-v", "10", "UCI-breast-cancer-tra"};// 10 fold cross validation
@@ -49,16 +49,16 @@ public class LibSVMTest {
 		// 10折交叉验证
 		for(int i = 9; i < 10; i++){
 			// 查询测试数据信息的sql语句	
-			String sqlFindTest = "select * from dsfusion where Id between " + (i*2802+1) + " and " + ((i+1)*2802) + ";";
+			String sqlFindTest = "select * from dsfusion where Id between " + (i*700+1) + " and " + ((i+1)*700) + ";";
 			// 执行查询操作
 			testList = dao.search(sqlFindTest);
 			
 			// 查询训练数据信息的sql语句(前半部分)
-			String sqlFindTrain1 = "select * from dsfusion where Id between 0 and " + (i*2802) + ";";
+			String sqlFindTrain1 = "select * from dsfusion where Id between 0 and " + (i*700) + ";";
 			// 执行查询操作
 			trainList = dao.search(sqlFindTrain1);
 			// 查询训练数据信息的sql语句(后半部分)
-			String sqlFindTrain2 = "select * from dsfusion where Id between " + ((i+1)*2802+1) + " and 28025;";
+			String sqlFindTrain2 = "select * from dsfusion where Id between " + ((i+1)*700+1) + " and 7003;";
 			// 执行查询操作
 			trainList.addAll(dao.search(sqlFindTrain2));
 			
