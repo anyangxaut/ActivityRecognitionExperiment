@@ -125,19 +125,19 @@ public class KNNAlgorithm {
 		// 存储测试集数据
 		List<List<Double>> testList = null;
 		
-		// 十折交叉验证7003
+		// 十折交叉验证7003,14010,28025
 		for(int i = 0; i < 10; i++){
 			// 查询测试数据信息的sql语句	
-			String sqlFindTest = "select * from featureextraction where Id between " + (i*700+1) + " and " + ((i+1)*700) + ";";
+			String sqlFindTest = "select * from featureextraction where Id between " + (i*2802+1) + " and " + ((i+1)*2802) + ";";
 			// 执行查询操作
 			testList = dao.search(sqlFindTest);
 			
 			// 查询训练数据信息的sql语句(前半部分)
-			String sqlFindTrain1 = "select * from featureextraction where Id between 0 and " + (i*700) + ";";
+			String sqlFindTrain1 = "select * from featureextraction where Id between 0 and " + (i*2802) + ";";
 			// 执行查询操作
 			trainList = dao.search(sqlFindTrain1);
 			// 查询训练数据信息的sql语句(后半部分)
-			String sqlFindTrain2 = "select * from featureextraction where Id between " + ((i+1)*700+1) + " and 7003;";
+			String sqlFindTrain2 = "select * from featureextraction where Id between " + ((i+1)*2802+1) + " and 28025;";
 			// 执行查询操作
 			trainList.addAll(dao.search(sqlFindTrain2));
 			

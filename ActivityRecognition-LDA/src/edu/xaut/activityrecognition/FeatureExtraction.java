@@ -70,13 +70,14 @@ public class FeatureExtraction {
 		String[] sqlFind = new String[sensorNum];
 		// 创建sensorNum个List，用来存储各条sql语句查询到的结果数据信息
 		List<DataEntity>[] list = new List[sensorNum];
-		
 		// 对每种传感器以窗口大小windowSize，重叠率overlap进行窗口切分，并提取其特征值
 		for(int i = 0; i < sensorNum; i++){
 			// 循环查询各个传感器的数据信息，并进行存储
 			sqlFind[i] = "select * from " + tableName + " where SensorId = " + (i+1) + ";";
 			list[i] = dao.searchNew(sqlFind[i]);
-			
+			String[] sqlAdd = new String[sumData];
+			// sql数组下标
+			int index = 0;
 			// 窗口划分
 			for(int j = 0; j < sumData; j = j + overlapSzie){
 				// 当前窗口下线
@@ -101,8 +102,8 @@ public class FeatureExtraction {
 				double[] correlationValue = correlation(sensorData, meanValue, varianceValue);
 				// 计算能量-3
 				double[] energyValue = energy(sensorData);
-				String[] sqlAdd = new String[1];
-				sqlAdd[0] = "INSERT INTO `featureextraction` (`SensorId`, `AccX_mean`, `AccY_mean`, `AccZ_mean`, " +
+				
+				sqlAdd[index++] = "INSERT INTO `featureextraction` (`SensorId`, `AccX_mean`, `AccY_mean`, `AccZ_mean`, " +
 						"`AccX_variance`, `AccY_variance`, `AccZ_variance`, `AccX_AccY_correlation`, `AccY_AccZ_correlation`, " +
 						"`AccX_AccZ_correlation`, `AccX_energy`, `AccY_energy`, `AccZ_energy`, `locomotion`) VALUES " +
 						"(" + (i+1) + ", '" + meanValue[0] + "', '" + meanValue[1] + "', '" + meanValue[2] + "', '" + 
@@ -110,10 +111,9 @@ public class FeatureExtraction {
 						 + "', '" + correlationValue[0] + "', '" + correlationValue[1] + "', '" + correlationValue[2] + 
 						 "', '" + energyValue[0] + "', '" + energyValue[1] + "', '" + energyValue[2] + "', '" +
 						 Locomotion + "');";
-
-				// 执行插入语句
-				dao.save(sqlAdd);
 			}
+			// 执行插入语句
+			dao.save(sqlAdd);
 		}
 
 		System.out.println("动作" + tableName + "特征提取完毕！");

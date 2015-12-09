@@ -9,12 +9,12 @@ public class ActivityRecognition {
 		// TODO Auto-generated method stub
 		
 //		// 数据预处理
-//		DataPreprocess dataPreprocess = new DataPreprocess("C:\\Users\\Administrator\\Desktop\\anyang\\train\\");
+//		DataPreprocess dataPreprocess = new DataPreprocess("C:\\Users\\Administrator\\Desktop\\ActivityRecognitionExperiment\\OpportunityUCIDataset\\train\\");
 //		dataPreprocess.startPreprocess();
 //		
 //		
 //		// 窗口划分，特征提取
-//		FeatureExtraction featureExtraction = new FeatureExtraction(64, 0.5);
+//		FeatureExtraction featureExtraction = new FeatureExtraction(16, 0.5);
 //		// 将不同的动作类型数据存储在不同的表中
 //		System.out.println("********************动作类型划分开始**********************");
 //		featureExtraction.splitAction(1, "stand");
@@ -36,10 +36,10 @@ public class ActivityRecognition {
 		
 		
 		// 分类算法
-//		System.out.println("********************KNN分类算法开始**********************");
-//		KNNAlgorithm knn = new KNNAlgorithm();
-//		knn.startKNN();
-//		System.out.println("********************KNN分类算法结束**********************");
+		System.out.println("********************KNN分类算法开始**********************");
+		KNNAlgorithm knn = new KNNAlgorithm();
+		knn.startKNN();
+		System.out.println("********************KNN分类算法结束**********************");
 //		System.out.println("********************NBC分类算法开始**********************");
 //		NaiveBayesianAlgorithm nbc = new NaiveBayesianAlgorithm();
 //		nbc.startNBC();

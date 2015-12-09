@@ -83,39 +83,38 @@ public class DecisionTreeAlgorithm {
  		
  		// 10折交叉验证7003
  		for(int i = 0; i < 10; i++){
-// 			// 对于动作stand,locomation=1,(1-7003)
+ 			// 对于动作stand,locomation=1,(1-7003)(1-14010)(1-28025)
 // 			// 训练DecisionTree模型
 //			trainDecisionTree(1);
 // 			// 查询测试数据信息的sql语句	
-// 			String sqlFindTest = "select * from fusionresult where Id between " + (i*700+1) + " and " + ((i+1)*700) + ";";
+// 			String sqlFindTest = "select * from fusionresult where Id between " + (i*1401+1) + " and " + ((i+1)*1401) + ";";
 // 			// 执行查询操作
 // 			testList = dao.search(sqlFindTest);
  			
- 			// 对于动作walk,locomation=2,(7004-14006)
- 			// 训练DecisionTree模型
-			trainDecisionTree(2);
- 			// 查询测试数据信息的sql语句	
- 			String sqlFindTest = "select * from fusionresult where Id between " + (i*700+7004) + " and " + ((i+1)*700+7003) + ";";
- 			// 执行查询操作
- 			testList = dao.search(sqlFindTest);
+// 			// 对于动作walk,locomation=2,(7004-14006)(14011-28020)
+// 			// 训练DecisionTree模型
+//			trainDecisionTree(2);
+// 			// 查询测试数据信息的sql语句	
+// 			String sqlFindTest = "select * from fusionresult where Id between " + (i*1401+14011) + " and " + ((i+1)*1401+14010) + ";";
+// 			// 执行查询操作
+// 			testList = dao.search(sqlFindTest);
  			
  			
-// 			// 对于动作sit,locomation=4,(14007-21009)
+// 			// 对于动作sit,locomation=4,(14007-21009)(28021-42030)
 // 		    // 训练DecisionTree模型
 //			trainDecisionTree(4);
 // 			// 查询测试数据信息的sql语句	
-// 			String sqlFindTest = "select * from fusionresult where Id between " + (i*700+14007) + " and " + ((i+1)*700+14006) + ";";
+// 			String sqlFindTest = "select * from fusionresult where Id between " + (i*1401+28021) + " and " + ((i+1)*1401+28020) + ";";
 // 			// 执行查询操作
 // 			testList = dao.search(sqlFindTest);
-
  			
- 			// 对于动作lie,locomation=5,(21010-28012)
+ 			// 对于动作lie,locomation=5,(21010-28012)(42031-56040)
  		    // 训练DecisionTree模型
-//			trainDecisionTree(5);
-// 			// 查询测试数据信息的sql语句	
-// 			String sqlFindTest = "select * from fusionresult where Id between " + (i*700+21010) + " and " + ((i+1)*700+21009) + ";";
-// 			// 执行查询操作
-// 			testList = dao.search(sqlFindTest);
+			trainDecisionTree(5);
+ 			// 查询测试数据信息的sql语句	
+ 			String sqlFindTest = "select * from fusionresult where Id between " + (i*1401+42031) + " and " + ((i+1)*1401+42030) + ";";
+ 			// 执行查询操作
+ 			testList = dao.search(sqlFindTest);
 
  			
  			// 正确分类的数据量

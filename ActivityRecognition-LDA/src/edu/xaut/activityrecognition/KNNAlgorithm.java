@@ -128,63 +128,63 @@ public class KNNAlgorithm {
 		
 		//  10折交叉验证7003
 		for(int i = 0; i < 10; i++){
-//			// 对于动作stand,locomation=1,(1-7003)
-//			// 查询测试数据信息的sql语句	
-//			String sqlFindTest = "select * from fusionresult where Id between " + (i*700+1) + " and " + ((i+1)*700) + ";";
-//			// 执行查询操作
-//			testList = dao.search(sqlFindTest);
-//			
-//			// 查询训练数据信息的sql语句(前半部分)
-//			String sqlFindTrain1 = "select * from fusionresult where Id between 0 and " + (i*700) + ";";
-//			// 执行查询操作
-//			trainList = dao.search(sqlFindTrain1);
-//			// 查询训练数据信息的sql语句(后半部分)
-//			String sqlFindTrain2 = "select * from fusionresult where Id between " + ((i+1)*700+1) + " and 7003;";
-//			// 执行查询操作
-//			trainList.addAll(dao.search(sqlFindTrain2));
-			
-//			// 对于动作walk,locomation=2,(7004-14006)
-//			// 查询测试数据信息的sql语句	
-//			String sqlFindTest = "select * from fusionresult where Id between " + (i*700+7004) + " and " + ((i+1)*700+7003) + ";";
-//			// 执行查询操作
-//			testList = dao.search(sqlFindTest);
-//			
-//			// 查询训练数据信息的sql语句(前半部分)
-//			String sqlFindTrain1 = "select * from fusionresult where Id between 0 and " + (i*700+7003) + ";";
-//			// 执行查询操作
-//			trainList = dao.search(sqlFindTrain1);
-//			// 查询训练数据信息的sql语句(后半部分)
-//			String sqlFindTrain2 = "select * from fusionresult where Id between " + ((i+1)*700+7004) + " and 14006;";
-//			// 执行查询操作
-//			trainList.addAll(dao.search(sqlFindTrain2));
-			
-//			// 对于动作sit,locomation=4,(14007-21009)
-//			// 查询测试数据信息的sql语句	
-//			String sqlFindTest = "select * from fusionresult where Id between " + (i*700+14007) + " and " + ((i+1)*700+14006) + ";";
-//			// 执行查询操作
-//			testList = dao.search(sqlFindTest);
-//			
-//			// 查询训练数据信息的sql语句(前半部分)
-//			String sqlFindTrain1 = "select * from fusionresult where Id between 0 and " + (i*700+14006) + ";";
-//			// 执行查询操作
-//			trainList = dao.search(sqlFindTrain1);
-//			// 查询训练数据信息的sql语句(后半部分)
-//			String sqlFindTrain2 = "select * from fusionresult where Id between " + ((i+1)*700+14007) + " and 21009;";
-//			// 执行查询操作
-//			trainList.addAll(dao.search(sqlFindTrain2));
-			
-			// 对于动作lie,locomation=5,(21010-28012)
+			// 对于动作stand,locomation=1,(1-7003)(1-14010)(1-28025)
 			// 查询测试数据信息的sql语句	
-			String sqlFindTest = "select * from fusionresult where Id between " + (i*700+21010) + " and " + ((i+1)*700+21009) + ";";
+//			String sqlFindTest = "select * from fusionresult where Id between " + (i*1401+1) + " and " + ((i+1)*1401) + ";";
+//			// 执行查询操作
+//			testList = dao.search(sqlFindTest);
+//			
+//			// 查询训练数据信息的sql语句(前半部分)
+//			String sqlFindTrain1 = "select * from fusionresult where Id between 0 and " + (i*1401) + ";";
+//			// 执行查询操作
+//			trainList = dao.search(sqlFindTrain1);
+//			// 查询训练数据信息的sql语句(后半部分)
+//			String sqlFindTrain2 = "select * from fusionresult where Id between " + ((i+1)*1401+1) + " and 14010;";
+//			// 执行查询操作
+//			trainList.addAll(dao.search(sqlFindTrain2));
+			
+//			// 对于动作walk,locomation=2,(7004-14006)(14011-28020)
+//			// 查询测试数据信息的sql语句	
+//			String sqlFindTest = "select * from fusionresult where Id between " + (i*1401+14011) + " and " + ((i+1)*1401+14010) + ";";
+//			// 执行查询操作
+//			testList = dao.search(sqlFindTest);
+//			
+//			// 查询训练数据信息的sql语句(前半部分)
+//			String sqlFindTrain1 = "select * from fusionresult where Id between 0 and " + (i*1401+14010) + ";";
+//			// 执行查询操作
+//			trainList = dao.search(sqlFindTrain1);
+//			// 查询训练数据信息的sql语句(后半部分)
+//			String sqlFindTrain2 = "select * from fusionresult where Id between " + ((i+1)*1401+14011) + " and 28020;";
+//			// 执行查询操作
+//			trainList.addAll(dao.search(sqlFindTrain2));
+			
+//			// 对于动作sit,locomation=4,(14007-21009)(28021-42030)
+//			// 查询测试数据信息的sql语句	
+//			String sqlFindTest = "select * from fusionresult where Id between " + (i*1401+28021) + " and " + ((i+1)*1401+28020) + ";";
+//			// 执行查询操作
+//			testList = dao.search(sqlFindTest);
+//			
+//			// 查询训练数据信息的sql语句(前半部分)
+//			String sqlFindTrain1 = "select * from fusionresult where Id between 0 and " + (i*1401+28020) + ";";
+//			// 执行查询操作
+//			trainList = dao.search(sqlFindTrain1);
+//			// 查询训练数据信息的sql语句(后半部分)
+//			String sqlFindTrain2 = "select * from fusionresult where Id between " + ((i+1)*1401+28021) + " and 42030;";
+//			// 执行查询操作
+//			trainList.addAll(dao.search(sqlFindTrain2));
+			
+			// 对于动作lie,locomation=5,(21010-28012)(42031-56040)
+			// 查询测试数据信息的sql语句	
+			String sqlFindTest = "select * from fusionresult where Id between " + (i*1401+42031) + " and " + ((i+1)*1401+42030) + ";";
 			// 执行查询操作
 			testList = dao.search(sqlFindTest);
 			
 			// 查询训练数据信息的sql语句(前半部分)
-			String sqlFindTrain1 = "select * from fusionresult where Id between 0 and " + (i*700+21009) + ";";
+			String sqlFindTrain1 = "select * from fusionresult where Id between 0 and " + (i*1401+42030) + ";";
 			// 执行查询操作
 			trainList = dao.search(sqlFindTrain1);
 			// 查询训练数据信息的sql语句(后半部分)
-			String sqlFindTrain2 = "select * from fusionresult where Id between " + ((i+1)*700+21010) + " and 28012;";
+			String sqlFindTrain2 = "select * from fusionresult where Id between " + ((i+1)*1401+42031) + " and 56040;";
 			// 执行查询操作
 			trainList.addAll(dao.search(sqlFindTrain2));
 			

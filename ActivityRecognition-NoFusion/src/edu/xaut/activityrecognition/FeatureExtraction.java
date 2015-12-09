@@ -31,7 +31,7 @@ public class FeatureExtraction {
 		// 查询特定动作数据信息的sql语句
 		String sqlFind1 = "select * from preprocessingdata where Locomotion=" + Locomotion + ";";
 		// 执行查询操作
-		List<DataEntity> list = dao.search(sqlFind1);
+		List<DataEntity> list = dao.searchF(sqlFind1);
 		// sql插入语句
 		String[] sqlAdd = new String[list.size()];
 		// sql数组下标
@@ -56,6 +56,9 @@ public class FeatureExtraction {
 		FeatureExtractionDao dao = new FeatureExtractionImpl();
 		// 计算重叠窗口大小
 		final int overlapSzie = (int)(windowSize * overlap);
+		String[] sqlAdd = new String[sumData];
+		// sql数组下标
+		int index = 0;
 		// 以窗口大小windowSize，重叠率overlap进行窗口切分，并提取其特征值
 		for(int i = 0; i < sumData; i = i + overlapSzie){
 			// 当前窗口下线
@@ -67,7 +70,7 @@ public class FeatureExtraction {
 			// 查询特定窗口大小数据信息的sql语句
 			String sqlFind = "select * from " + tableName + " where Id between " + minWindow + " and " + maxWindow + ";";
 			// 执行查询操作
-			List<DataEntity> list = dao.search(sqlFind);
+			List<DataEntity> list = dao.searchF(sqlFind);
 			
 			// 计算均值-9
 			double[] meanValue = means(list);
@@ -77,8 +80,8 @@ public class FeatureExtraction {
 			double[] correlationValue = correlation(list, meanValue, varianceValue);
 			// 计算能量-9
 			double[] energyValue = energy(list);
-			String[] sqlAdd = new String[1];
-			sqlAdd[0] = "INSERT INTO `featureextraction` (`RKN_accX_mean`, `RKN_accY_mean`, `RKN_accZ_mean`, `HIP_accX_mean`, `HIP_accY_mean`, " +
+			
+			sqlAdd[index++] = "INSERT INTO `featureextraction` (`RKN_accX_mean`, `RKN_accY_mean`, `RKN_accZ_mean`, `HIP_accX_mean`, `HIP_accY_mean`, " +
 					"`HIP_accZ_mean`, `LUA_accX_mean`, `LUA_accY_mean`, `LUA_accZ_mean`, `RKN_accX_variance`, `RKN_accY_variance`, " +
 					"`RKN_accZ_variance`, `HIP_accX_variance`, `HIP_accY_variance`, `HIP_accZ_variance`, `LUA_accX_variance`, `LUA_accY_variance`," +
 					"`LUA_accZ_variance`, `RKN_accX_RKN_accY_correlation`, `RKN_accX_RKN_accZ_correlation`," +
@@ -119,10 +122,10 @@ public class FeatureExtraction {
 					correlationValue[45] + "', '" + correlationValue[46] + "', '" + correlationValue[47] + "', '" + correlationValue[48] + "', '" + correlationValue[49] + "', '" + correlationValue[51] + "', '" + correlationValue[52] + "', '" + correlationValue[53] + "', '" + 
 					correlationValue[54] + "', '" + correlationValue[55] + "', '" + correlationValue[56] + "', '" + correlationValue[57] + "', '" + correlationValue[58] + "', '" + correlationValue[59] + "', '" + correlationValue[61] + "', '" + correlationValue[62] + "', '" + 
 					correlationValue[63] + "'," +" '" + correlationValue[64] + "', '" + correlationValue[65] + "', '" + correlationValue[66] + "', '" + correlationValue[67] + "', '" + correlationValue[68] + "', '" + correlationValue[69] + "', '" + correlationValue[71] + "', '" + 
-					correlationValue[72] + "', '" + correlationValue[73] + "', '" + correlationValue[74] + "', '" + correlationValue[75] + "', '" + correlationValue[76] + "', '" + correlationValue[77] + "', '" + correlationValue[78] + "', '" + correlationValue[79] + "', '" + energyValue[0] + "', '" + energyValue[1] + "', '" + energyValue[2] + "', '" + energyValue[3] + "'," +" '" + energyValue[4] + "', '" + energyValue[5] + "', '" + energyValue[6] + "', '" + energyValue[7] + "', '" + energyValue[8] + "', '" + Locomotion + "');";
-			// 执行插入语句
-			dao.save(sqlAdd);
+					correlationValue[72] + "', '" + correlationValue[73] + "', '" + correlationValue[74] + "', '" + correlationValue[75] + "', '" + correlationValue[76] + "', '" + correlationValue[77] + "', '" + correlationValue[78] + "', '" + correlationValue[79] + "', '" + energyValue[0] + "', '" + energyValue[1] + "', '" + energyValue[2] + "', '" + energyValue[3] + "'," +" '" + energyValue[4] + "', '" + energyValue[5] + "', '" + energyValue[6] + "', '" + energyValue[7] + "', '" + energyValue[8] + "', '" + Locomotion + "');";			
 		}
+		// 执行插入语句
+		dao.save(sqlAdd);
 		System.out.println("动作" + tableName + "特征提取完毕！");
 	}
 	

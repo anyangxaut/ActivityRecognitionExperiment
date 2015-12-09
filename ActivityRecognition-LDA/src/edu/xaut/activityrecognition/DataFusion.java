@@ -125,6 +125,9 @@ public class DataFusion {
 			listFeature[i] = dao.search(sqlFindFeature[i]);
 		}
 		// 融合结果
+		String[] sqlAdd = new String[listFeature[0].size()];
+		// sql数组下标
+		int index = 0;
 				for(int i = 0; i < listFeature[0].size(); i++){
 					double[] fusionResult = new double[12];
 					for(int j = 0; j < 12; j++){
@@ -137,18 +140,16 @@ public class DataFusion {
 						fusionResult[j] = sensor1 + sensor2 + sensor3;
 					}
 					// 将计算结果存储进数据库
-					String[] sqlAdd = new String[1];
-					sqlAdd[0] = "INSERT INTO `fusionresult` (`WeightType`, `AccX_mean`, `AccY_mean`, `AccZ_mean`, `AccX_variance`, " +
+					sqlAdd[index++] = "INSERT INTO `fusionresult` (`WeightType`, `AccX_mean`, `AccY_mean`, `AccZ_mean`, `AccX_variance`, " +
 							"`AccY_variance`, `AccZ_variance`, `AccX_AccY_correlation`, `AccY_AccZ_correlation`, " +
 							"`AccX_AccZ_correlation`, `AccX_energy`, `AccY_energy`, `AccZ_energy`, `locomotion`) VALUES " +
 							"(" + weightType + ", '" + fusionResult[0] + "', '" + fusionResult[1] + "', '" + fusionResult[2] + "', '" +
 							fusionResult[3] + "', '" + fusionResult[4] + "', '" + fusionResult[5] + "', '" + fusionResult[6] + 
 							"', '" + fusionResult[7] + "', '" + fusionResult[8] + "', '" + fusionResult[9] + "', '" + 
 							fusionResult[10] + "', '" + fusionResult[11] + "', '" + Locomotion + "');";
-
-					// 执行插入语句
-					dao.save(sqlAdd);
 				}
+				// 执行插入语句
+				dao.save(sqlAdd);
 	}
 	
 }

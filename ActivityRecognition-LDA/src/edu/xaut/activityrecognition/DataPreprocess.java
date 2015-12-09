@@ -147,7 +147,7 @@ public class DataPreprocess {
 	// 将预处理后的原始数据进行文件存储
 //	private boolean saveDataAsFile(){
 //		
-//	FileWriter writer;
+//		FileWriter writer;
 //		try {
 //			// 通过保存文件的路径及其文件名称初始化FileWriter对象
 //			writer = new FileWriter(filePath + "DataPreprocess.txt",true);

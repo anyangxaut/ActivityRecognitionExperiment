@@ -9,12 +9,11 @@ public class ActivityRecognition {
 		// TODO Auto-generated method stub
 		
 //		// 数据预处理
-//		DataPreprocess dataPreprocess = new DataPreprocess("C:\\Users\\Administrator\\Desktop\\anyang\\train\\");
-//		dataPreprocess.startPreprocess();
-//		
+//		DataPreprocess dataPreprocess = new DataPreprocess("C:\\Users\\Administrator\\Desktop\\ActivityRecognitionExperiment\\OpportunityUCIDataset\\train\\");
+//		dataPreprocess.startPreprocess();	
 //		
 //		// 窗口划分，特征提取
-//		FeatureExtraction featureExtraction = new FeatureExtraction(3, 64, 0.5);
+//		FeatureExtraction featureExtraction = new FeatureExtraction(3, 32, 0.5);
 //		// 将不同的动作类型数据存储在不同的表中
 //		System.out.println("********************动作类型划分开始**********************");
 //		featureExtraction.splitAction(1, "stand");
@@ -33,8 +32,8 @@ public class ActivityRecognition {
 //		// 对"lie"动作进行特征提取
 //		featureExtraction.startFeatureExtraction(5, "lie", 5572);
 //		System.out.println("********************特征提取结束**********************");
-		
-		
+//		
+//		
 //		// 数据融合
 //		System.out.println("********************数据融合开始**********************");
 //		DataFusion df = new DataFusion();
@@ -53,11 +52,11 @@ public class ActivityRecognition {
 //		System.out.println("********************数据融合结束**********************");
 		
 		// 分类算法
-//		System.out.println("********************KNN分类算法开始**********************");
-//		// 利用KNN进行分类识别
-//		KNNAlgorithm knn = new KNNAlgorithm();
-//		knn.startKNN();	
-//		System.out.println("********************KNN分类算法结束**********************");
+		System.out.println("********************KNN分类算法开始**********************");
+		// 利用KNN进行分类识别
+		KNNAlgorithm knn = new KNNAlgorithm();
+		knn.startKNN();	
+		System.out.println("********************KNN分类算法结束**********************");
 //		System.out.println("********************NBC分类算法开始**********************");
 //		NaiveBayesianAlgorithm nbc = new NaiveBayesianAlgorithm();
 //		nbc.startNBC();
